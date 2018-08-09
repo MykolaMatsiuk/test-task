@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/charts', 'ChartController@index');
+Route::get('/tables', 'TableController@index');
+Route::get('/components/navbar', 'ComponentController@navbar');
+Route::get('/components/cards', 'ComponentController@cards');
