@@ -12,6 +12,9 @@ import ReactDOM from "react-dom";
 import Navbar from "./components/Navbar";
 import Cards from "./components/Cards";
 import GMap from "./components/Map";
+import Charts from "./components/Charts";
+import Dashboard from "./components/Dashboard";
+import Tables from "./components/Tables";
 
 if (document.getElementById("navbarik")) {
   ReactDOM.render(
@@ -24,6 +27,27 @@ if (document.getElementById("cards")) {
   ReactDOM.render(
     <Cards />,
     document.getElementById("cards")
+  );
+}
+
+if (document.getElementById("charts")) {
+  ReactDOM.render(
+    <Charts />,
+    document.getElementById("charts")
+  );
+}
+
+if (document.getElementById("dashboard")) {
+  ReactDOM.render(
+    <Dashboard />,
+    document.getElementById("dashboard")
+  );
+}
+
+if (document.getElementById("tables")) {
+  ReactDOM.render(
+    <Tables />,
+    document.getElementById("tables")
   );
 }
 
