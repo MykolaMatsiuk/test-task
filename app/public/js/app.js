@@ -56043,24 +56043,87 @@ var GMap = function (_Component) {
   function GMap() {
     _classCallCheck(this, GMap);
 
-    return _possibleConstructorReturn(this, (GMap.__proto__ || Object.getPrototypeOf(GMap)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (GMap.__proto__ || Object.getPrototypeOf(GMap)).call(this));
+
+    _this.state = {
+      show: roles[0].name === "superadmin" || roles[0].name === "admin" ? "true" : false,
+      lat: null,
+      lng: null
+    };
+    _this.inputLat = _this.inputLat.bind(_this);
+    _this.inputLng = _this.inputLng.bind(_this);
+    return _this;
   }
 
   _createClass(GMap, [{
+    key: "inputLat",
+    value: function inputLat(e) {
+      this.setState({
+        lat: e.target.value
+      });
+    }
+  }, {
+    key: "inputLng",
+    value: function inputLng(e) {
+      this.setState({
+        lng: e.target.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Map"],
-        {
-          google: this.props.google,
-          zoom: 10,
-          style: style,
-          initialCenter: { lat: 50.45466, lng: 30.5238 }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Marker"], {
-          onClick: this.onMarkerClick,
-          name: "Current location"
-        })
+        "div",
+        null,
+        this.state.show ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { className: "row" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "form-group col-3" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "label",
+              { htmlFor: "inp" },
+              "Type laltitude:"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              id: "inp",
+              className: "form-control",
+              onChange: this.inputLat
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "form-group col-3" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "label",
+              { htmlFor: "inp2" },
+              "Type longitude:"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              id: "inp2",
+              className: "form-control",
+              onChange: this.inputLng
+            })
+          )
+        ) : null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Map"],
+          {
+            google: this.props.google,
+            zoom: 10,
+            style: style,
+            initialCenter: { lat: 50.45466, lng: 30.5238 }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Marker"], {
+            onClick: this.onMarkerClick,
+            name: "Current location",
+            position: {
+              lat: this.state.lat,
+              lng: this.state.lng
+            }
+          })
+        )
       );
     }
   }]);
