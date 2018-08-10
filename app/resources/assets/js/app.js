@@ -11,6 +11,7 @@ import ReactDOM from "react-dom";
 
 import Navbar from "./components/Navbar";
 import Cards from "./components/Cards";
+import GMap from "./components/Map";
 
 if (document.getElementById("navbarik")) {
   ReactDOM.render(
@@ -24,4 +25,8 @@ if (document.getElementById("cards")) {
     <Cards />,
     document.getElementById("cards")
   );
+}
+
+if (document.getElementById("map")) {
+  ReactDOM.render(<GMap />, document.getElementById("map"));
 }

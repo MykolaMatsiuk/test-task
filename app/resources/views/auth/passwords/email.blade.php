@@ -38,6 +38,9 @@
               <div class="form-label-group">
                 <input type="email" id="inputEmail" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Enter email address" required="required" autofocus="autofocus" value="{{ old('email') }}">
                 <label for="inputEmail">Enter email address</label>
+                @if (session('status'))
+                    <div class="alert alert-success" style="margin-top: 20px">{{ session('status') }}</div>
+                @endif
                 @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('email') }}</strong>

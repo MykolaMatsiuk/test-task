@@ -32,8 +32,13 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/tables">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fas fa-map-marked-alt"></i>
       <span>Tables</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/map">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Map</span></a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="/pages" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

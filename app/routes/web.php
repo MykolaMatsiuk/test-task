@@ -22,3 +22,4 @@ Route::get('/charts', 'ChartController@index');
 Route::get('/tables', 'TableController@index');
 Route::get('/components/navbar', 'ComponentController@navbar');
 Route::get('/components/cards', 'ComponentController@cards');
+Route::get('/map', 'MapController@index');

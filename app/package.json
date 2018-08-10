@@ -22,5 +22,8 @@
         "react-dom": "^16.2.0",
         "stylus": "^0.54.5",
         "stylus-loader": "^3.0.2"
+    },
+    "dependencies": {
+        "google-maps-react": "^2.0.2"
     }
 }

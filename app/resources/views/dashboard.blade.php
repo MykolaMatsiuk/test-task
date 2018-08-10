@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('main')
+  @if (session('status'))
+      <div class="alert alert-success">{{ session('status') }}</div>
+  @endif
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
