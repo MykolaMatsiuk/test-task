@@ -11,15 +11,32 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard', [
+  'uses' => 'HomeController@index',
+  'middleware' => 'roles',
+  'roles' => ['admin', 'superadmin']
+]);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/charts', 'ChartController@index');
-Route::get('/tables', 'TableController@index');
-Route::get('/components/navbar', 'ComponentController@navbar');
-Route::get('/components/cards', 'ComponentController@cards');
-Route::get('/map', 'MapController@index');
+Route::get('/charts', [
+  'uses' => 'ChartController@index',
+  'middleware' => 'roles',
+  'roles' => ['admin', 'superadmin']
+]);
+Route::get('/tables', [
+  'uses' => 'TableController@index',
+  'middleware' => 'roles',
+  'roles' => ['manager', 'superadmin']
+]);
+Route::get('/components/navbar', [
+  'uses' => 'ComponentController@navbar',
+  'middleware' => 'roles',
+  'roles' => ['admin', 'superadmin', 'user']
+]);
+Route::get('/components/cards', [
+  'uses' => 'ComponentController@cards',
+  'middleware' => 'roles',
+  'roles' => ['admin', 'superadmin', 'user']
+]);
+Route::get('/', 'MapController@index');

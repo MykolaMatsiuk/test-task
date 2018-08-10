@@ -1,6 +1,6 @@
 <ul class="sidebar navbar-nav">
-  <li class="nav-item active">
-    <a class="nav-link" href="/">
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span>
     </a>
@@ -36,7 +36,7 @@
       <span>Tables</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/map">
+    <a class="nav-link" href="/">
       <i class="fas fa-fw fa-table"></i>
       <span>Map</span></a>
   </li>
