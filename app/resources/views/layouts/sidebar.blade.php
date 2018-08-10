@@ -15,6 +15,9 @@
       @guest
         <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
         <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+        <a class="dropdown-item" href="{{ route('password.request') }}">Forgot Password</a>
+      @else
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
       @endguest
       <div class="dropdown-divider"></div>
       <h6 class="dropdown-header">Other Pages:</h6>

@@ -5,6 +5,8 @@
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>
+  
+  <span style="color: white">@auth {{ Auth::user()->email }} @endauth</span>
 
   <!-- Navbar Search -->
   <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -53,10 +55,7 @@
         <a class="dropdown-item" href="#">Activity Log</a>
         <div class="dropdown-divider"></div>
         @auth
-        <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> {{ Logout }}</a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
         @endauth
       </div>
     </li>
