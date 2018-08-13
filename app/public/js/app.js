@@ -14376,7 +14376,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(25);
-module.exports = __webpack_require__(78);
+module.exports = __webpack_require__(81);
 
 
 /***/ }),
@@ -14392,9 +14392,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Navbar__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Cards__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Map__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Charts__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Dashboard__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Tables__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Charts__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Dashboard__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Tables__ = __webpack_require__(80);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -56048,10 +56048,12 @@ var GMap = function (_Component) {
     _this.state = {
       show: roles[0].name === "superadmin" || roles[0].name === "admin" ? "true" : false,
       lat: null,
-      lng: null
+      lng: null,
+      coord: []
     };
     _this.inputLat = _this.inputLat.bind(_this);
     _this.inputLng = _this.inputLng.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
   }
 
@@ -56070,42 +56072,59 @@ var GMap = function (_Component) {
       });
     }
   }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var obj = {};
+      obj.lat = this.state.lat;
+      obj.lng = this.state.lng;
+      this.state.coord.push(obj);
+      console.log(this.state.coord);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         null,
         this.state.show ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "div",
-          { className: "row" },
+          "form",
+          { onSubmit: this.handleSubmit },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
-            { className: "form-group col-3" },
+            { className: "row" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              "label",
-              { htmlFor: "inp" },
-              "Type laltitude:"
+              "div",
+              { className: "form-group col-3" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "label",
+                { htmlFor: "inp" },
+                "Type laltitude:"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+                id: "inp",
+                className: "form-control",
+                onChange: this.inputLat
+              })
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
-              id: "inp",
-              className: "form-control",
-              onChange: this.inputLat
-            })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "div",
+              { className: "form-group col-3" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "label",
+                { htmlFor: "inp2" },
+                "Type longitude:"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+                id: "inp2",
+                className: "form-control",
+                onChange: this.inputLng
+              })
+            )
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "form-group col-3" },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              "label",
-              { htmlFor: "inp2" },
-              "Type longitude:"
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
-              id: "inp2",
-              className: "form-control",
-              onChange: this.inputLng
-            })
-          )
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", value: "Submit" })
         ) : null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Map"],
@@ -56115,13 +56134,15 @@ var GMap = function (_Component) {
             style: style,
             initialCenter: { lat: 50.45466, lng: 30.5238 }
           },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Marker"], {
-            onClick: this.onMarkerClick,
-            name: "Current location",
-            position: {
-              lat: this.state.lat,
-              lng: this.state.lng
-            }
+          this.state.coord.map(function (el) {
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_google_maps_react__["Marker"], {
+              onClick: _this2.onMarkerClick,
+              name: "Current location",
+              position: {
+                lat: el.lat,
+                lng: el.lng
+              }
+            });
           })
         )
       );
@@ -61734,16 +61755,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 /* 78 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61896,7 +61907,7 @@ var Cards = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Cards);
 
 /***/ }),
-/* 84 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64189,7 +64200,7 @@ var Dashboard = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Dashboard);
 
 /***/ }),
-/* 85 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66305,6 +66316,12 @@ var Tables = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Tables);
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
